@@ -1,27 +1,12 @@
-import { test, expect } from '@playwright/test';
-import { Login } from '../PageObject/login';
-import { DropDown } from '../PageObject/DropDown';
-import { AddProduct } from '../PageObject/AddProduct';
-import { Cart } from '../PageObject/Cart';
+import { test } from '../Fixtures/PomFixture';
 import { TestResultsHandler } from '../utils/testResultsHandler';
-import Credentials from "../PageObject/Credintial.json";
+import dotenv from "dotenv";
+dotenv.config();
 
-interface ICredentials {
-    baseURL: string;
-}
 
-// Extract baseURL from credentials JSON
-const { baseURL } = Credentials as ICredentials;
 
 // Initialize test results handler
 const resultsHandler = new TestResultsHandler('test-results/results.json');
-
-// Login before each test
-test.beforeEach('Login', async ({ page }) => {
-    await page.goto(baseURL);
-    const login = new Login(page);
-    await login.login();
-});
 
 // After hook to capture test results
 test.afterEach(async ({ }, testInfo) => {
@@ -35,20 +20,26 @@ test.afterEach(async ({ }, testInfo) => {
 // Test suite
 test.describe('All Tests', async () => {
 
-    test("DropDown", async ({ page }) => {
-        const dropdown = new DropDown(page);
+    test('Login Test', async ({ page, login }) => {
+        await login.loginFail();
+        await login.login();
+        await page.waitForTimeout(2000);
+    });
+
+    test("DropDown", async ({ page, login, dropdown }) => {
+        await login.login();  // Login first
         await dropdown.dropdown();
         await page.waitForTimeout(2000);
     });
 
-    test('Select Product', async ({ page }) => {
-        const product = new AddProduct(page);
-        await product.addProduct();
+    test('Select Product', async ({ page, login, addProduct }) => {
+        await login.login();  // Login first
+        await addProduct.addProduct( );
         await page.waitForTimeout(2000);
     });
 
-    test('Cart Functionality', async ({ page }) => {
-        const cart = new Cart(page);
+    test('Cart Functionality', async ({ page, login, cart }) => {
+        await login.login();  // Login first
         await cart.addProduct();
         await page.waitForTimeout(2000);
         await cart.formDetails();   
@@ -56,5 +47,4 @@ test.describe('All Tests', async () => {
         await cart.checkout();
         await page.waitForTimeout(2000);
     });
-
 });

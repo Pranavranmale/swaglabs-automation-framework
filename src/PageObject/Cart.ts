@@ -1,16 +1,5 @@
 import { Page } from "@playwright/test";
-
-interface IFormDetails {
-  firstName: string;
-  lastName: string;
-  postalCode: string;
-}
-const formData: IFormDetails = {
-  firstName: "John",
-  lastName: "Doe",
-  postalCode: "12345",
-};
-
+import { formData } from "../types/Types";
 export class Cart {
   readonly page: Page;
 
