@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env :
-      BASEURL: ${{ secrets.BASEURL }}
+      BASEURL: ${{ secrets.BASE_URL }}
       USERNAME: ${{ secrets.USERNAME }}
       PASSWORD: ${{ secrets.PASSWORD }}
       INVALID_USERNAME: ${{ secrets.INVALID_USERNAME }}
