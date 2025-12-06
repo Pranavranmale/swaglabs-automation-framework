@@ -1,50 +1,55 @@
-import { expect, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 import { credentials } from "../types/Types"
 import dotenv from "dotenv";
 import { configs } from '../types/Types';
 
 dotenv.config();
 const { baseURL } = configs;
+
 export class Login {
   readonly page: Page;
+  readonly usernameInput: Locator;
+  readonly passwordInput: Locator;
+  readonly loginBtn: Locator;
+  readonly errorMsg: Locator;
+  readonly successTitle: Locator;
   private credentials = credentials;
 
   constructor(page: Page) {
     this.page = page;
+
+    //Locators Initialization
+    this.usernameInput = page.getByPlaceholder("Username");
+    this.passwordInput = page.getByPlaceholder("Password");
+    this.loginBtn = page.getByRole("button", { name: "Login" });
+    this.errorMsg = page.locator("text=Epic sadface: Username and password do not match any user in this service");
+    this.successTitle = page.locator("text=Swag Labs");
   }
-  
+
   async loginFail(): Promise<void> {
-    // Use invalid credentials from environment variables
-   
-    const username1= process.env.INVALID_USERNAME || "invalid_user";
-    const password2= process.env.INVALID_PASSWORD || "invalid_pass";
+    const username1 = process.env.INVALID_USERNAME || "invalid_user";
+    const password2 = process.env.INVALID_PASSWORD || "invalid_pass";
 
-    // UI actions
     await this.page.goto(baseURL);
-    await this.page.getByPlaceholder("Username").fill(username1);
-    await this.page.getByPlaceholder("Password").fill(password2);
-    await this.page.getByRole("button", { name: "Login" }).click();
-    // Wait for error message
+    await this.usernameInput.fill(username1);
+    await this.passwordInput.fill(password2);
+    await this.loginBtn.click();
+
     await this.page.waitForLoadState("networkidle");
-    await expect(this.page.locator("text=Epic sadface: Username and password do not match any user in this service")).toBeVisible({ timeout: 10000 });
+    await expect(this.errorMsg).toBeVisible({ timeout: 10000 });
   }
 
-  async login(): Promise<void> {
-    // Use credentials from Types - which gets from .env
+  async loginPage(): Promise<void> {
     const username = this.credentials.username;
     const password = this.credentials.password;
 
-    console.log("Login attempt with:", username);
-
-    // UI actions
     await this.page.goto(baseURL);
-    await this.page.getByPlaceholder("Username").fill(username);
-    await this.page.getByPlaceholder("Password").fill(password);
-    await this.page.getByRole("button", { name: "Login" }).click();
+    await this.usernameInput.fill(username);
+    await this.passwordInput.fill(password);
+    await this.loginBtn.click();
 
-    // Wait for navigation and verify login success
     await this.page.waitForLoadState("networkidle");
-    await expect(this.page.locator("text=Swag Labs")).toBeVisible({ timeout: 10000 });
+    await expect(this.successTitle).toBeVisible({ timeout: 10000 });
     console.log("Login successful!");
   }
 }

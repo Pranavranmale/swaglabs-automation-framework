@@ -10,6 +10,6 @@ const { baseURL } = configs;
 test('Login', async ({ page, login }) => {
     await page.goto(baseURL);
     await login.loginFail();
-    await login.login();
+    await login.loginPage();
     await page.waitForTimeout(2000);
 });

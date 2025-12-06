@@ -1,7 +1,7 @@
 import { test as baseTest } from '@playwright/test';
 import { Login } from '../PageObject/login';
 import { DropDown } from '../PageObject/DropDown';
-import { AddProduct } from '../PageObject/AddProduct';
+import { AddProduct } from '../PageObject/addProduct';
 import { Cart } from '../PageObject/Cart';
 import { TestResultsHandler } from '../utils/testResultsHandler';
 type pages = {
@@ -23,7 +23,7 @@ const testPages = baseTest.extend<pages>({
     },
 
     addProduct: async ({ page }, use) => {
-        await use(new AddProduct(page)  );
+        await use(new AddProduct(page, 'defaultProductName'));
     },
 
     cart: async ({ page }, use) => {
