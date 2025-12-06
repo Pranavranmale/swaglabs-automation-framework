@@ -35,7 +35,7 @@ export class Login {
     await this.passwordInput.fill(password2);
     await this.loginBtn.click();
 
-    await this.page.waitForLoadState("networkidle");
+    await this.page.waitForLoadState("networkidle"); //wait for page to load
     await expect(this.errorMsg).toBeVisible({ timeout: 10000 });
   }
 

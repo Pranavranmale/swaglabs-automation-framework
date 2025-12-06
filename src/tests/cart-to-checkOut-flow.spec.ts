@@ -1,6 +1,6 @@
 import { test } from "../Fixtures/PomFixture";
-
-test("Cart Functionality", async ({ login, cart }) => {
+test("Cart to Checkout Flow", async ({ login, cart, addProduct }) => {
   await login.loginPage();
+  await addProduct.addToCart();
   await cart.completeCheckoutFlow();   
 });

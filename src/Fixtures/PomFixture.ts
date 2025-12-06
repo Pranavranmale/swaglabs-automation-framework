@@ -4,12 +4,14 @@ import { DropDown } from '../PageObject/DropDown';
 import { AddProduct } from '../PageObject/addProduct';
 import { Cart } from '../PageObject/Cart';
 import { TestResultsHandler } from '../utils/testResultsHandler';
+
 type pages = {
     login: Login;
     dropdown: DropDown;
     addProduct: AddProduct;
     cart: Cart;
     testResultsHandler: TestResultsHandler;
+    addproduct: AddProduct;
 };
 
 const testPages = baseTest.extend<pages>({
@@ -23,7 +25,7 @@ const testPages = baseTest.extend<pages>({
     },
 
     addProduct: async ({ page }, use) => {
-        await use(new AddProduct(page, 'defaultProductName'));
+        await use(new AddProduct(page, 'Sauce Labs Backpack'));
     },
 
     cart: async ({ page }, use) => {
