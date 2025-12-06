@@ -12,6 +12,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env :
+      BASEURL: ${{ secrets.BASEURL }}
+      USERNAME: ${{ secrets.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      INVALID_USERNAME: ${{ secrets.INVALID_USERNAME }}
+      INVALID_PASSWORD: ${{ secrets.INVALID_PASSWORD }}
+      
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
