@@ -1,5 +1,5 @@
 import { Page, expect } from "@playwright/test";
-import { formData } from '../types/Types';
+import { formData } from '../Types/Types';
 export class Cart {
   readonly page: Page;
 

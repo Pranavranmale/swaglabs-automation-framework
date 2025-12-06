@@ -1,5 +1,5 @@
 import { test } from '../Fixtures/PomFixture';
-import { configs } from '../types/Types';
+import { configs } from '../Types/Types';
 import dotenv from "dotenv";
 dotenv.config();
 // Extract baseURL from environment variables

@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from "@playwright/test";
-import { credentials } from "../types/Types"
+import { credentials } from "../Types/Types"
 import dotenv from "dotenv";
-import { configs } from '../types/Types';
+import { configs } from '../Types/Types';
 
 dotenv.config();
 const { baseURL } = configs;
