@@ -1,9 +1,13 @@
 {
   "name": "saucedemo-web-automaiton",
   "version": "1.0.0",
-   "type": "module",
+  "type": "module",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+  "test:dev": "set DOTENV_CONFIG_PATH=.env.dev && node -r dotenv/config ./playwright-run.cjs",
+  "test:qa": "set DOTENV_CONFIG_PATH=.env.qa && node -r dotenv/config ./playwright-run.cjs",
+  "test:prod": "set DOTENV_CONFIG_PATH=.env.prod && node -r dotenv/config ./playwright-run.cjs"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
