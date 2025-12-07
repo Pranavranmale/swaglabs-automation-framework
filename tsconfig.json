@@ -7,7 +7,7 @@
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
-      "@utils/*": ["Src/Utils/*"],
+      "@utils/*": ["Src/utils/*"],
       "@fixtures/*": ["Src/Fixtures/*"],
       "@pages/*": ["Src/PageObject/*"]
     }

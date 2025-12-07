@@ -3,7 +3,7 @@ import { Login } from '../PageObject/login';
 import { DropDown } from '../PageObject/DropDown';
 import { AddProduct } from '../PageObject/addProduct';
 import { Cart } from '../PageObject/Cart';
-import { TestResultsHandler } from '../Utils/testResultsHandler';
+import { TestResultsHandler } from '../utils/testResultsHandler';
 
 type pages = {
     login: Login;

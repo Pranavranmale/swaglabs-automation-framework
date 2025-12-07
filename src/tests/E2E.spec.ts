@@ -1,6 +1,6 @@
 // tests/e2e.spec.ts
 import { test, expect } from '../Fixtures/PomFixture'
-import { TestNames } from '../Utils/Testname';
+import { TestNames } from '../utils/Testname';
   
   test('Complete purchase flow', async ({  login, dropdown, cart, addProduct,testResultsHandler }) => {
          try{
