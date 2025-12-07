@@ -1,14 +1,14 @@
-import { test, expect } from '../Fixtures/PomFixture.ts';
+import { test, expect } from '../Fixtures/PomFixture';
 import * as dotenv from 'dotenv';
-import { AddProduct } from '../PageObject/addProduct.ts';
+import {AddProductName} from '../Utils/handalResults';
 
 dotenv.config();
 
 const productName = "Sauce Labs Backpack";
 
-test('Add product to cart and verify Products page', async ({ page, login, addProduct }) => {
+test('Add product to cart and verify Products page', async ({ page, login, addProduct, testResultsHandler }) => {
 
-    // Login
+     try{    // Login
     await login.loginPage();
 
     // Add product to cart and return to products page
@@ -22,4 +22,12 @@ test('Add product to cart and verify Products page', async ({ page, login, addPr
     // Verify correct product in cart
     await expect(cartItems.first().locator('.inventory_item_name')).toHaveText(productName);
     await page.waitForTimeout(2000);
+    testResultsHandler.addTestResult(AddProductName, "passed");
+  } 
+  catch (error) {
+    testResultsHandler.addTestResult(AddProductName, "failed", error.message);
+    throw error;
+  }
 });
+
+    

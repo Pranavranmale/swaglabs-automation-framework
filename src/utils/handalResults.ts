@@ -1,0 +1,5 @@
+export const AddProductName="Add product to cart and verify Products page"
+export const E2ETestName="Complete purchase flow"
+export const CheckoutFlowName="Cart to Checkout Flow"
+export const LoginTestName="Login Test"
+export const DropDownTestName="Validate Product and Sorting"
