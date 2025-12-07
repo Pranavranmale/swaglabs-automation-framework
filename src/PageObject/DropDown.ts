@@ -34,6 +34,7 @@ export class DropDown {
 
     // dropdown selection reusable
     async selectSort(type: string) {
+        await this.page.waitForSelector('.product_sort_container', { timeout: 30000 });
         await this.sortDropdown.selectOption(type);
     }
 

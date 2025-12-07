@@ -1,10 +1,10 @@
 import { expect, Locator, Page } from "@playwright/test";
-import { credentials } from "../Types/Types"
 import dotenv from "dotenv";
-import { configs } from '../Types/Types';
+
 
 dotenv.config();
-const { baseURL } = configs;
+const baseURL = process.env.BASE_URL;
+
 
 export class Login {
   readonly page: Page;
@@ -13,7 +13,6 @@ export class Login {
   readonly loginBtn: Locator;
   readonly errorMsg: Locator;
   readonly successTitle: Locator;
-  private credentials = credentials;
 
   constructor(page: Page) {
     this.page = page;
@@ -27,12 +26,12 @@ export class Login {
   }
 
   async loginFail(): Promise<void> {
-    const username1 = process.env.INVALID_USERNAME || "invalid_user";
-    const password2 = process.env.INVALID_PASSWORD || "invalid_pass";
+    const invalidUsername = process.env.INVALID_USERNAME || "";
+    const invalidPassword = process.env.INVALID_PASSWORD || "";
 
     await this.page.goto(baseURL);
-    await this.usernameInput.fill(username1);
-    await this.passwordInput.fill(password2);
+    await this.usernameInput.fill(invalidUsername);
+    await this.passwordInput.fill(invalidPassword);
     await this.loginBtn.click();
 
     await this.page.waitForLoadState("networkidle"); //wait for page to load
@@ -40,9 +39,9 @@ export class Login {
   }
 
   async loginPage(): Promise<void> {
-    const username = this.credentials.username;
-    const password = this.credentials.password;
-
+    
+    const username = process.env.USERNAME1;
+    const password = process.env.PASSWORD1;
     await this.page.goto(baseURL);
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);
