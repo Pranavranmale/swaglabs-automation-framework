@@ -4,6 +4,12 @@
     "target": "es6",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "@utils/*": ["src/Utils/*"],
+      "@fixtures/*": ["src/Fixtures/*"],
+      "@pages/*": ["src/PageObject/*"]
+    }
   }
 }

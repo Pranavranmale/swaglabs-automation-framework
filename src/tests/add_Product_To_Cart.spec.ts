@@ -1,6 +1,7 @@
 import { test, expect } from '../Fixtures/PomFixture';
 import * as dotenv from 'dotenv';
-import {AddProductName} from '../Utils/handalResults';
+import {AddProductName} from '../Utils/TestNames';
+
 
 dotenv.config();
 

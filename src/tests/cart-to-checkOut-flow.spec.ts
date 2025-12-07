@@ -1,5 +1,5 @@
 import { test } from "../Fixtures/PomFixture";
-import { CheckoutFlowName } from '../Utils/handalResults';
+import { CheckoutFlowName } from '../Utils/TestNames';
 test("Cart to Checkout Flow", async ({login,cart,addProduct,testResultsHandler}) => {
   try {
     await login.loginPage();
