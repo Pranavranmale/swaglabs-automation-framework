@@ -1,6 +1,6 @@
 import { test } from '../Fixtures/PomFixture';
 import dotenv from "dotenv";
-import {TestNames} from '../Utils/AllTestNames';
+import {TestNames} from '../Utils/Testname';
 dotenv.config();
 // Extract baseURL from environment variables
 const baseURL = process.env.BASE_URL;

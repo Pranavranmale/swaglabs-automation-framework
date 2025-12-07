@@ -1,6 +1,6 @@
 import { test, expect } from '../Fixtures/PomFixture';
 import * as dotenv from 'dotenv';
-import {TestNames} from '../Utils/AllTestNames'
+import {TestNames} from '../Utils/Testname'
 
 dotenv.config();
 

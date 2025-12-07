@@ -1,6 +1,5 @@
 import { test } from "../Fixtures/PomFixture";
-import { TestNames } from '../Utils/AllTestNames';
-
+import { TestNames } from "../Utils/Testname";
 test("Validate Product and Sorting", async ({ login, dropdown,testResultsHandler }) => {
 
   try{
