@@ -1,24 +1,22 @@
 name: Playwright Test Pipeline
 
-# Workflow triggers
 on:
   push:
-    branches: [ "main" ]       # Run pipeline on push to main
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]       # Run pipeline on pull request
-  workflow_dispatch:           # Allow manual trigger
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
-    env :
+    env:
       BASEURL: ${{ secrets.BASEURL }}
       USERNAME: ${{ secrets.USERNAME }}
       PASSWORD: ${{ secrets.PASSWORD }}
       INVALID_USERNAME: ${{ secrets.INVALID_USERNAME }}
       INVALID_PASSWORD: ${{ secrets.INVALID_PASSWORD }}
-      
 
     steps:
       - name: Checkout Repository
@@ -27,17 +25,21 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20     # Change version if required
+          node-version: 20
 
       - name: Install Dependencies
-        run: npm install       # Use npm ci for faster installs if preferred
+        run: npm ci
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright Tests
+      - name: Check Environment Variables
         run: |
-          npx playwright test --reporter=html,line
+          echo "BASEURL is set: ${BASEURL:+YES}"
+          echo "USERNAME is set: ${USERNAME:+YES}"
+
+      - name: Run Playwright Tests
+        run: npx playwright test --reporter=html,line
 
       - name: Upload Test Report
         if: always()
