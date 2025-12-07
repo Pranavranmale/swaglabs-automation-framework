@@ -7,9 +7,9 @@
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
-      "@utils/*": ["src/Utils/*"],
-      "@fixtures/*": ["src/Fixtures/*"],
-      "@pages/*": ["src/PageObject/*"]
+      "@utils/*": ["Src/Utils/*"],
+      "@fixtures/*": ["Src/Fixtures/*"],
+      "@pages/*": ["Src/PageObject/*"]
     }
   }
 }

@@ -9,6 +9,6 @@ test("Cart to Checkout Flow", async ({login,cart,addProduct,testResultsHandler})
   } 
   catch (error) {
     testResultsHandler.addTestResult(TestNames.CheckoutFlowName, "failed", error.message);
-    throw error;
+    throw error; 
   }
 });
