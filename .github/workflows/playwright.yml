@@ -14,7 +14,7 @@ jobs:
     env:
       BASE_URL: ${{ secrets.BASE_URL }}
       USERNAME1: ${{ secrets.USERNAME1 }}
-      PASSWORD1: ${{ secrets.PASSWORD2 }} # secrets मध्ये PASSWORD2 आहे
+      PASSWORD1: ${{ secrets.PASSWORD2 }} 
       INVALID_USERNAME: ${{ secrets.INVALID_USERNAME }}
       INVALID_PASSWORD: ${{ secrets.INVALID_PASSWORD }}
 
