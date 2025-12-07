@@ -1,6 +1,6 @@
 import { test } from '../Fixtures/PomFixture';
 import dotenv from "dotenv";
-import {LoginTestName} from '../Utils/TestNames';
+import {TestNames} from '../Utils/TestNames';
 dotenv.config();
 // Extract baseURL from environment variables
 const baseURL = process.env.BASE_URL;
@@ -9,10 +9,10 @@ test('Login test', async ({ page, login,testResultsHandler }) => {
     await page.goto(baseURL);
     await login.loginFail();
     await login.loginPage();
-    testResultsHandler.addTestResult(LoginTestName, "passed");
+    testResultsHandler.addTestResult(TestNames.LoginTestName, "passed");
     }
     catch(error){
-         testResultsHandler.addTestResult(LoginTestName, "failed", error.message); 
+         testResultsHandler.addTestResult(TestNames.LoginTestName, "failed", error.message); 
          throw error;
     }
 });

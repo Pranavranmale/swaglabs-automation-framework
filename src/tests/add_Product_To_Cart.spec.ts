@@ -1,7 +1,6 @@
 import { test, expect } from '../Fixtures/PomFixture';
 import * as dotenv from 'dotenv';
-import {AddProductName} from '../Utils/TestNames';
-
+import {TestNames} from '../Utils/TestNames'
 
 dotenv.config();
 
@@ -23,10 +22,10 @@ test('Add product to cart and verify Products page', async ({ page, login, addPr
     // Verify correct product in cart
     await expect(cartItems.first().locator('.inventory_item_name')).toHaveText(productName);
     await page.waitForTimeout(2000);
-    testResultsHandler.addTestResult(AddProductName, "passed");
+    testResultsHandler.addTestResult(TestNames.AddProductName, "passed");
   } 
   catch (error) {
-    testResultsHandler.addTestResult(AddProductName, "failed", error.message);
+    testResultsHandler.addTestResult(TestNames.AddProductName, "failed", error.message);
     throw error;
   }
 });
