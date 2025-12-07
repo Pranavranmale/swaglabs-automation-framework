@@ -1,5 +1,5 @@
 // tests/e2e.spec.ts
-import { test, expect } from '../Fixtures/PomFixture.ts';
+import { test, expect } from '../Fixtures/PomFixture.ts'
 
 test.describe('SauceDemo Full E2E Flow', () => {
   

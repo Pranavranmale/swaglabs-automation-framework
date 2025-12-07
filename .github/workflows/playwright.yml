@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      BASEURL: ${{ secrets.BASEURL }}
-      USERNAME: ${{ secrets.USERNAME }}
-      PASSWORD: ${{ secrets.PASSWORD }}
+      BASE_URL: ${{ secrets.BASE_URL }}
+      USERNAME1: ${{ secrets.USERNAME1 }}
+      PASSWORD1: ${{ secrets.PASSWORD2 }} # secrets मध्ये PASSWORD2 आहे
       INVALID_USERNAME: ${{ secrets.INVALID_USERNAME }}
       INVALID_PASSWORD: ${{ secrets.INVALID_PASSWORD }}
 
@@ -33,10 +33,11 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Check Environment Variables
+      - name: Verify ENV Loading
         run: |
-          echo "BASEURL is set: ${BASEURL:+YES}"
-          echo "USERNAME is set: ${USERNAME:+YES}"
+          echo "BASE_URL: ${BASE_URL}"
+          echo "USERNAME1: ${USERNAME1:+LOADED}"
+          echo "PASSWORD1: ${PASSWORD1:+LOADED}"
 
       - name: Run Playwright Tests
         run: npx playwright test --reporter=html,line
