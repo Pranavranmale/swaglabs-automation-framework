@@ -28,4 +28,3 @@ import { E2ETestName } from '../Utils/handalResults';
              throw error;
           }
       });
-

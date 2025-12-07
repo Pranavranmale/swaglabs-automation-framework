@@ -18,20 +18,20 @@ export default defineConfig({
     // -----------------------------
     // Desktop Devices
     // -----------------------------
-    {
-      name: 'Desktop-Large',
-      use: {
-        browserName: 'chromium',
-        viewport: { width: 1920, height: 1080 }
-      }
-    },
-    {
-      name: 'Desktop-Medium',
-      use: {
-        browserName: 'chromium',
-        viewport: { width: 1366, height: 768 }
-      }
-    },
+    // {
+    //   name: 'Desktop-Large',
+    //   use: {
+    //     browserName: 'chromium',
+    //     viewport: { width: 1920, height: 1080 }
+    //   }
+    // },
+    // {
+    //   name: 'Desktop-Medium',
+    //   use: {
+    //     browserName: 'chromium',
+    //     viewport: { width: 1366, height: 768 }
+    //   }
+    // },
     {
       name: 'Desktop-Small',
       use: {

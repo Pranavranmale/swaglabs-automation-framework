@@ -1,6 +1,6 @@
 import { test } from "../Fixtures/PomFixture";
 import { CheckoutFlowName } from '../Utils/handalResults';
-test("Cart to Checkout Flow", async ({login,cart,addProduct,testResultsHandler,}) => {
+test("Cart to Checkout Flow", async ({login,cart,addProduct,testResultsHandler}) => {
   try {
     await login.loginPage();
     await addProduct.addToCart();
