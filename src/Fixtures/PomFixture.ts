@@ -2,7 +2,7 @@ import { test as baseTest } from '@playwright/test';
 import { Login } from '../PageObject/login';
 import { DropDown } from '../PageObject/DropDown';
 import { AddProduct } from '../PageObject/addProduct';
-import { Cart } from '../PageObject/Cart';
+import { ProductCheckoutFlow } from '../PageObject/ProductCheckoutFlow';
 import { TestResultsHandler } from '../utils/testResultsHandler';
 import { LoginFail } from '../PageObject/loginFail';
 
@@ -10,7 +10,7 @@ type pages = {
     login: Login;
     dropdown: DropDown;
     addProduct: AddProduct;
-    cart: Cart;
+    productCheckoutFlow: ProductCheckoutFlow;
     testResultsHandler: TestResultsHandler;
     addproduct: AddProduct;
     loginFail: LoginFail;
@@ -30,8 +30,8 @@ const testPages = baseTest.extend<pages>({
         await use(new AddProduct(page, 'Sauce Labs Backpack'));
     },
 
-    cart: async ({ page }, use) => {
-        await use(new Cart(page));
+    productCheckoutFlow: async ({ page }, use) => {
+        await use(new ProductCheckoutFlow(page));
     },
 
     testResultsHandler: async ({}, use) => {

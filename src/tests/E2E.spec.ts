@@ -1,30 +1,25 @@
 // tests/e2e.spec.ts
 import { test, expect } from '../Fixtures/PomFixture'
 import { TestNames } from '../utils/Testname';
-  
-  test('Complete purchase flow', async ({  login, dropdown, cart, addProduct,testResultsHandler }) => {
-         try{
-           // Login
-          await login.loginPage();
 
-          // Sort products
-          await dropdown.selectSort('az');
+test('Complete purchase flow', async ({ login, dropdown, addProduct, productCheckoutFlow, testResultsHandler }) => {
+  try {
+    // Step 1: Login
+    await login.loginPage();
+    
+    // Step 2: Sort Products (A → Z)
+    await dropdown.selectSort('az');
 
-          // Add product to cart
-          await dropdown.getProducts();
-          await addProduct.addToCart();
-          await addProduct.openCart();
+    // Step 3: Verify + Checkout + Finish
+    const orderText = await productCheckoutFlow.completeCheckoutFlow();
 
-          // Validate success page
-          await cart.completeCheckoutFlow();
+    // Step 4: Assertion
+    expect(orderText).toBe("Thank you for your order!");
 
-          const successText = await cart.getSuccessText();
-          expect(successText).toContain("Thank you for your order!");
+    testResultsHandler.addTestResult(TestNames.E2ETestName, "passed");
 
-           testResultsHandler.addTestResult(TestNames.E2ETestName, "passed");
-         }
-          catch(error){
-             testResultsHandler.addTestResult(TestNames.E2ETestName, "failed", error.message); 
-             throw error;
-          }
-      });
+  } catch (error: any) {
+    testResultsHandler.addTestResult(TestNames.E2ETestName, "failed", error.message);
+    throw error;
+  }
+});

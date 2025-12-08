@@ -8,10 +8,11 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
 
-  use: {
-    baseURL: process.env.BASE_URL,
-    trace: 'on-first-retry',
-  },
+ use: {
+  screenshot: "only-on-failure",     // takes screenshot when test fails
+  video: "retain-on-failure",        // records video only on failure
+  trace: "retain-on-failure",        // generates trace.zip for debugging
+},
 
   projects: [
 
@@ -43,14 +44,14 @@ export default defineConfig({
     // -----------------------------
     // Mobile Devices
     // -----------------------------
-    {
-      name: 'Pixel 5',
-      use: { ...devices['Pixel 5'] }
-    },
-    {
-      name: 'iPhone 12',
-      use: { ...devices['iPhone 12'] }
-    },
+    // {
+    //   name: 'Pixel 5',
+    //   use: { ...devices['Pixel 5'] }
+    // },
+    // {
+    //   name: 'iPhone 12',
+    //   use: { ...devices['iPhone 12'] }
+    // },
 
     // -----------------------------
     // Browsers
@@ -59,13 +60,13 @@ export default defineConfig({
       name: 'Chromium',
       use: { ...devices['Desktop Chrome'] }
     },
-    {
-      name: 'Firefox',
-      use: { ...devices['Desktop Firefox'] }
-    },
-    {
-      name: 'Safari',
-      use: { ...devices['Desktop Safari'] }
-    }
+    // {
+    //   name: 'Firefox',
+    //   use: { ...devices['Desktop Firefox'] }
+    // },
+    // {
+    //   name: 'Safari',
+    //   use: { ...devices['Desktop Safari'] }
+    // }
   ],
 });

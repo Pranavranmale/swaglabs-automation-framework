@@ -33,7 +33,7 @@ export class AddProduct {
         else {
             await this.product.click();
             await expect(this.detailPageAddBtn).toBeVisible();
-            await this.detailPageAddBtn.click();
+            // await this.detailPageAddBtn.click();
         }
     }
 

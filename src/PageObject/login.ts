@@ -13,6 +13,7 @@ export class Login {
   readonly loginBtn: Locator;
   readonly errorMsg: Locator;
   readonly successTitle: Locator;
+  readonly baseURL: string;
 
   constructor(page: Page) {
     this.page = page;
@@ -33,7 +34,6 @@ export class Login {
     await this.passwordInput.fill(password);
     await this.loginBtn.click();
 
-    await this.page.waitForLoadState("networkidle");
     await expect(this.successTitle).toBeVisible({ timeout: 10000 });
     console.log("Login successful!");
   }
