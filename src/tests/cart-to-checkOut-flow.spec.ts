@@ -1,5 +1,5 @@
 import { test } from "../Fixtures/PomFixture";
-import { TestNames } from "@utils/Testname";
+import { TestNames } from "../utils/Testname";
 test("Dynamic Random Product Checkout", async ({ login, productCheckoutFlow, testResultsHandler }) => {
   try {
     await login.loginPage();
