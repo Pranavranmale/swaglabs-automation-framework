@@ -4,6 +4,7 @@ import { DropDown } from '../PageObject/DropDown';
 import { AddProduct } from '../PageObject/addProduct';
 import { Cart } from '../PageObject/Cart';
 import { TestResultsHandler } from '../utils/testResultsHandler';
+import { LoginFail } from '../PageObject/loginFail';
 
 type pages = {
     login: Login;
@@ -12,6 +13,7 @@ type pages = {
     cart: Cart;
     testResultsHandler: TestResultsHandler;
     addproduct: AddProduct;
+    loginFail: LoginFail;
 };
 
 const testPages = baseTest.extend<pages>({
@@ -35,6 +37,10 @@ const testPages = baseTest.extend<pages>({
     testResultsHandler: async ({}, use) => {
         await use(new TestResultsHandler('test-results/results.json'));
     },
+    loginFail: async ({ page }, use) => {
+        await use(new LoginFail(page));
+    },
+
 });
 
 export const test = testPages;

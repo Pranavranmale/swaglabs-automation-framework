@@ -32,13 +32,13 @@ export default defineConfig({
     //     viewport: { width: 1366, height: 768 }
     //   }
     // },
-    {
-      name: 'Desktop-Small',
-      use: {
-        browserName: 'chromium',
-        viewport: { width: 1280, height: 720 }
-      }
-    },
+    // {
+    //   name: 'Desktop-Small',
+    //   use: {
+    //     browserName: 'chromium',
+    //     viewport: { width: 1280, height: 720 }
+    //   }
+    // },
 
     // -----------------------------
     // Mobile Devices

@@ -24,20 +24,6 @@ export class Login {
     this.errorMsg = page.locator("text=Epic sadface: Username and password do not match any user in this service");
     this.successTitle = page.locator("text=Swag Labs");
   }
-
-  async loginFail(): Promise<void> {
-    const invalidUsername = process.env.INVALID_USERNAME || "";
-    const invalidPassword = process.env.INVALID_PASSWORD || "";
-
-    await this.page.goto(baseURL);
-    await this.usernameInput.fill(invalidUsername);
-    await this.passwordInput.fill(invalidPassword);
-    await this.loginBtn.click();
-
-    await this.page.waitForLoadState("networkidle"); //wait for page to load
-    await expect(this.errorMsg).toBeVisible({ timeout: 10000 });
-  }
-
   async loginPage(): Promise<void> {
     
     const username = process.env.USERNAME1;

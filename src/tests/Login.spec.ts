@@ -3,11 +3,8 @@ import dotenv from "dotenv";
 import {TestNames} from '../utils/Testname';
 dotenv.config();
 // Extract baseURL from environment variables
-const baseURL = process.env.BASE_URL;
-test('Login test', async ({ page, login,testResultsHandler }) => {
+test('Login test', async ({ login,testResultsHandler }) => {
     try{
-    await page.goto(baseURL);
-    await login.loginFail();
     await login.loginPage();
     testResultsHandler.addTestResult(TestNames.LoginTestName, "passed");
     }
