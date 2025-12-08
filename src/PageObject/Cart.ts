@@ -1,21 +1,21 @@
-import { Page, expect } from "@playwright/test";
+import { Page, expect, Locator } from "@playwright/test";
 import { formData } from '../Types/Types';
 export class Cart {
   readonly page: Page;
 
   // Locators
-  readonly cartIcon;
-  readonly checkoutBtn;
-  readonly firstName;
-  readonly lastName;
-  readonly postalCode;
-  readonly continueBtn;
-  readonly finishBtn;
-  readonly thankYouMsg;
-  readonly backHomeBtn;
-  readonly productName;
-  readonly totalPrice;
-  readonly cartTitle;
+  readonly cartIcon: Locator;
+  readonly checkoutBtn: Locator;
+  readonly firstName: Locator;
+  readonly lastName: Locator;
+  readonly postalCode: Locator;
+  readonly continueBtn: Locator;
+  readonly finishBtn: Locator;
+  readonly thankYouMsg: Locator;
+  readonly backHomeBtn: Locator;
+  readonly productName: Locator;
+  readonly totalPrice: Locator;
+  readonly cartTitle: Locator;
 
   constructor(page: Page) {
     this.page = page;

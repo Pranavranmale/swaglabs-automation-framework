@@ -43,7 +43,7 @@ export class AddProduct {
         await expect(this.page.locator(".cart_list")).toBeVisible();
     }
 
-    // return back to products list page
+
   
 
     // single function to execute full add product flow
