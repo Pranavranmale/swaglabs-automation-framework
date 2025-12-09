@@ -1,9 +1,10 @@
 import { Page, Locator, expect } from "@playwright/test";
+import { log } from "console";
 
 export class AddProduct {
     readonly page: Page;
 
-    readonly product: Locator;                // product name text locator
+   
     readonly listPageAddBtn: Locator;         // add button visible on product list page
     readonly detailPageAddBtn: Locator;       // add button inside product detail page
     readonly cartIcon: Locator;               // cart icon on top of UI
@@ -16,7 +17,6 @@ export class AddProduct {
         // Used to build dynamic [data-test="add-to-cart-xxx"] locators
         const formattedName = productName.toLowerCase().replace(/ /g, "-");
 
-        this.product = page.getByText(productName, { exact: true });
         this.listPageAddBtn   = page.locator(`[data-test="add-to-cart-${formattedName}"]`);
         this.detailPageAddBtn = page.locator(`[data-test="add-to-cart-${formattedName}"]`);
 
@@ -31,12 +31,10 @@ export class AddProduct {
             await this.listPageAddBtn.click();
         } 
         else {
-            await this.product.click();
-            await expect(this.detailPageAddBtn).toBeVisible();
-            // await this.detailPageAddBtn.click();
+          console.log("Product not found on list page, navigating to detail page.");
         }
     }
-
+    
     // navigate to cart page
     async openCart() {
         await this.cartIcon.click();

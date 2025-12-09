@@ -58,7 +58,13 @@ export default defineConfig({
     // -----------------------------
     {
       name: 'Chromium',
-      use: { ...devices['Desktop Chrome'] }
+      use: { 
+        ...devices['Desktop Chrome'], 
+        headless: false,
+        screenshot: "on",     // added for reports
+        video: "on",        // added for reports
+        trace: "on",        // added for reports
+      },
     },
     // {
     //   name: 'Firefox',

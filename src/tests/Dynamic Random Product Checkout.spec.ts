@@ -5,7 +5,7 @@ test("Dynamic Random Product Checkout", async ({ login, productCheckoutFlow, tes
     await login.loginPage();
     const addedProduct = await productCheckoutFlow.addProductToCart();  // <-- Dynamic
 
-    console.log(`Checkout Completed for Product → ${addedProduct}`);
+    console.log(`Checkout Completed for Product  ${addedProduct}`);
     testResultsHandler.addTestResult(TestNames.CheckoutFlowName, "passed");
   } catch (error) {
     testResultsHandler.addTestResult(TestNames.CheckoutFlowName, "failed", error.message);
