@@ -23,7 +23,7 @@ export class Login {
     this.passwordInput = page.getByPlaceholder("Password");
     this.loginBtn = page.getByRole("button", { name: "Login" });
     this.errorMsg = page.locator("text=Epic sadface: Username and password do not match any user in this service");
-    this.successTitle = page.locator("text=Swag Labs");
+    this.successTitle = page.locator(".header_secondary_container");
   }
   async loginPage(): Promise<void> {
     
@@ -33,7 +33,6 @@ export class Login {
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);
     await this.loginBtn.click();
-
     await expect(this.successTitle).toBeVisible({ timeout: 10000 });
     console.log("Login successful!");
   }

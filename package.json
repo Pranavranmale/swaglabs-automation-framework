@@ -4,17 +4,18 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-  "test:dev": "set DOTENV_CONFIG_PATH=.env.dev && node -r dotenv/config ./playwright-run.cjs",
-  "test:qa": "set DOTENV_CONFIG_PATH=.env.qa && node -r dotenv/config ./playwright-run.cjs",
-  "test:prod": "set DOTENV_CONFIG_PATH=.env.prod && node -r dotenv/config ./playwright-run.cjs"
-},
+    "test:dev": "set DOTENV_CONFIG_PATH=.env.dev && node -r dotenv/config ./playwright-run.cjs",
+    "test:qa": "set DOTENV_CONFIG_PATH=.env.qa && node -r dotenv/config ./playwright-run.cjs",
+    "test:prod": "set DOTENV_CONFIG_PATH=.env.prod && node -r dotenv/config ./playwright-run.cjs"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.53.1",
-    "@types/node": "^24.0.3"
+    "@types/node": "^24.0.3",
+    "cross-env": "^10.1.0"
   },
   "dependencies": {
     "@faker-js/faker": "^10.1.0",

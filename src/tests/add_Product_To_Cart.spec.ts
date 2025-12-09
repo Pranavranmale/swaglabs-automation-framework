@@ -30,4 +30,3 @@ test('Add product to cart and verify Products page', async ({ page, login, addPr
   }
 });
 
-    
