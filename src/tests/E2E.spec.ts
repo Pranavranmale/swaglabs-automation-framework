@@ -2,7 +2,7 @@
 import { test, expect } from '../Fixtures/PomFixture'
 import { TestNames } from '../utils/Testname';
 
-test('Complete purchase flow', async ({ login, dropdown, addProduct, productCheckoutFlow, testResultsHandler }) => {
+test('Complete purchase flow', async ({ login, dropdown, productCheckoutFlow, testResultsHandler }) => {
   try {
     // Step 1: Login
     await login.loginPage();
