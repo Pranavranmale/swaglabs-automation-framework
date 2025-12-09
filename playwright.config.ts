@@ -9,10 +9,10 @@ export default defineConfig({
   reporter: 'html',
 
  use: {
-  screenshot: "only-on-failure",     // takes screenshot when test fails
-  video: "retain-on-failure",        // records video only on failure
-  trace: "retain-on-failure",        // generates trace.zip for debugging
-},
+  screenshot: "only-on-failure",
+  video: "retain-on-failure",
+  trace: "retain-on-failure",
+ },
 
   projects: [
 
@@ -59,13 +59,16 @@ export default defineConfig({
     {
       name: 'Chromium',
       use: { 
-        ...devices['Desktop Chrome'], 
-        headless: false,
-        screenshot: "on",     // added for reports
-        video: "on",        // added for reports
-        trace: "on",        // added for reports
+        ...devices['Desktop Chrome'],
+
+        headless: process.env.CI ? true : false,
+
+        screenshot: "on",
+        video: "on",
+        trace: "on",
       },
     },
+
     // {
     //   name: 'Firefox',
     //   use: { ...devices['Desktop Firefox'] }

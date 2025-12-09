@@ -1,5 +1,4 @@
 import { Page, Locator, expect } from "@playwright/test";
-import { log } from "console";
 
 export class AddProduct {
     readonly page: Page;
@@ -34,7 +33,7 @@ export class AddProduct {
           console.log("Product not found on list page, navigating to detail page.");
         }
     }
-    
+
     // navigate to cart page
     async openCart() {
         await this.cartIcon.click();
