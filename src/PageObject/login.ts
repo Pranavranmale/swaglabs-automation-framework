@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 
 dotenv.config();
-const baseURL = process.env.BASE_URL;
+const baseURL = process.env.BASE_URL || process.env.DEV_BASE_URL || process.env.QA_BASE_URL || process.env.PROD_BASE_URL;
 
 
 export class Login {
@@ -27,8 +27,11 @@ export class Login {
   }
   async loginPage(): Promise<void> {
     
-    const username = process.env.USERNAME1;
-    const password = process.env.PASSWORD1;
+    const username = process.env.USERNAME1 || process.env.DEV_USERNAME1 || process.env.QA_USERNAME1 || process.env.PROD_USERNAME1;
+    const password = process.env.PASSWORD1 || process.env.DEV_PASSWORD1 || process.env.QA_PASSWORD1 || process.env.PROD_PASSWORD1;
+    const baseURL = process.env.BASE_URL || process.env.DEV_BASE_URL || process.env.QA_BASE_URL || process.env.PROD_BASE_URL;
+
+
     await this.page.goto(baseURL);
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);

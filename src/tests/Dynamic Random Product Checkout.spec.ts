@@ -12,4 +12,3 @@ test("Dynamic Random Product Checkout", async ({ login, productCheckoutFlow, tes
     throw error;
   }
 });
-

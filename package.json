@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
-  "scripts": {
-    "test:dev": "set DOTENV_CONFIG_PATH=.env.dev && node -r dotenv/config ./playwright-run.cjs",
-    "test:qa": "set DOTENV_CONFIG_PATH=.env.qa && node -r dotenv/config ./playwright-run.cjs",
-    "test:prod": "set DOTENV_CONFIG_PATH=.env.prod && node -r dotenv/config ./playwright-run.cjs"
-  },
+"scripts": {
+  "test:local": "cross-env DOTENV_CONFIG_PATH=.env.local node playwright-run.cjs",
+  "test:dev": "cross-env DOTENV_CONFIG_PATH=.env.dev node playwright-run.cjs",
+  "test:qa":  "cross-env DOTENV_CONFIG_PATH=.env.qa node playwright-run.cjs",
+  "test:prod":"cross-env DOTENV_CONFIG_PATH=.env.prod node playwright-run.cjs"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",

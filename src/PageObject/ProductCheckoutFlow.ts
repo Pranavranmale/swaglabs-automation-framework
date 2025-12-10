@@ -58,7 +58,7 @@ export class ProductCheckoutFlow {
   async verifyCartProduct(product: string) {
     await this.cartIcon.click();
     const cartItems = await this.cartProducts.allInnerTexts();
-    await expect(cartItems).toContain(product);
+    expect(cartItems).toContain(product);
   }
 
   // 3) Fill Checkout Details
