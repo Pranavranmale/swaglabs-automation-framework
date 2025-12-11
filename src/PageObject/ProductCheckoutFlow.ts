@@ -26,7 +26,7 @@ export class ProductCheckoutFlow {
     this.productsName = page.locator(".inventory_item_name");
     this.addToCartButtons = page.locator("button:has-text('Add to cart')");
     this.cartIcon = page.locator(".shopping_cart_link");
-    this.cartProducts = page.locator(".inventory_item_name");
+    this.cartProducts = page.locator(".cart_list .inventory_item_name");
 
     this.checkoutBtn = page.locator("#checkout");
     this.firstName = page.getByPlaceholder("First Name");
@@ -34,7 +34,7 @@ export class ProductCheckoutFlow {
     this.postalCode = page.getByPlaceholder("Zip/Postal Code");
     this.continueBtn = page.locator("#continue");
     
-    this.overviewTitle = page.getByText("Checkout: Overview");
+    this.overviewTitle = this.page.locator('.title');
     this.totalPrice = page.locator(".summary_total_label");
 
     this.finishBtn = page.locator("#finish");
@@ -57,10 +57,12 @@ export class ProductCheckoutFlow {
   // 2) Verify Cart Item
   async verifyCartProduct(product: string) {
     await this.cartIcon.click();
+    await this.page.waitForURL("**/cart.html");
     const cartItems = await this.cartProducts.allInnerTexts();
     expect(cartItems).toContain(product);
   }
 
+  
   // 3) Fill Checkout Details
   async checkout() {
     await this.checkoutBtn.click();
@@ -68,6 +70,12 @@ export class ProductCheckoutFlow {
     await this.lastName.fill(formData.lastName);
     await this.postalCode.fill(formData.postalCode);
     await this.continueBtn.click();
+
+
+
+    await expect(this.overviewTitle).toHaveText("Checkout: Overview", {
+      timeout: 10000,
+    });
 
     await expect(this.overviewTitle).toBeVisible();
     await expect(this.totalPrice).toBeVisible();
